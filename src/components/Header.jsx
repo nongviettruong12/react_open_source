@@ -6,6 +6,7 @@ import image from "../assets/2029337.png";
 const Header = () => {
   return (
     <>
+    
       <div className="flex justify-between bg-lime-950 text-[white] p-2">
         <div className="flex ml-[50px]"> +001234567890</div>
         <div>
@@ -136,7 +137,9 @@ const Header = () => {
           </Navbar.Collapse>
         </div>
       </MegaMenu>
-      <div className="text-center"><img src="https://www.asus.com/me-en/microsite/powered-by-asus/images/ROG-Gaming-Gear_Banner_Gladius-II_2000x720.jpg" alt="" /></div>
+      <div className="container mx-auto">
+      <div className="text-center"><img src="https://www.toyota.com.vn//Resources/Images/251767956485382E3D8EF5D0E1D6D218.png" alt="" /></div>
+      </div>
     </>
   );
 };

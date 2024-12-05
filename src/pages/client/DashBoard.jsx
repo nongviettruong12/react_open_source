@@ -4,6 +4,7 @@ import { MegaMenu, Card } from "flowbite-react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axiosService from "../../api/instance";
+import Footer from "../../components/Footer";
 const DashBoard = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -15,374 +16,23 @@ const DashBoard = () => {
     <div>
       <Header />
       <section>
-        <div className="flex items-center justify-center my-5 ml-[10px]">
-          <button className="rounded-3xl bg-[gray] text-[white] p-2 mr-[20px]">
-            <MegaMenu.Dropdown toggle={<>Headphone Type</>}>
-              <ul className="grid grid-cols-3">
-                <div className="space-y-4 p-4">
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Headphone
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Keyboard
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Mouse
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Webcam
-                    </Link>
-                  </li>
-                </div>
-                <div className="space-y-4 p-4">
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Microphones
-                    </Link>
-                  </li>
-                </div>
-              </ul>
-            </MegaMenu.Dropdown>
-          </button>
-          <button className="rounded-3xl bg-[gray] text-[white] p-2 mr-[20px]">
-            <MegaMenu.Dropdown toggle={<>Headphone Type</>}>
-              <ul className="grid grid-cols-3">
-                <div className="space-y-4 p-4">
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Headphone
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Keyboard
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Mouse
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Webcam
-                    </Link>
-                  </li>
-                </div>
-                <div className="space-y-4 p-4">
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Microphones
-                    </Link>
-                  </li>
-                </div>
-              </ul>
-            </MegaMenu.Dropdown>
-          </button>
-          <button className="rounded-3xl bg-[gray] text-[white] p-2 mr-[20px]">
-            <MegaMenu.Dropdown toggle={<>Headphone Type</>}>
-              <ul className="grid grid-cols-3">
-                <div className="space-y-4 p-4">
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Headphone
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Keyboard
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Mouse
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Webcam
-                    </Link>
-                  </li>
-                </div>
-                <div className="space-y-4 p-4">
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Microphones
-                    </Link>
-                  </li>
-                </div>
-              </ul>
-            </MegaMenu.Dropdown>
-          </button>
-          <button className="rounded-3xl bg-[gray] text-[white] p-2 mr-[20px]">
-            <MegaMenu.Dropdown toggle={<>Headphone Type</>}>
-              <ul className="grid grid-cols-3">
-                <div className="space-y-4 p-4">
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Headphone
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Keyboard
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Mouse
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Webcam
-                    </Link>
-                  </li>
-                </div>
-                <div className="space-y-4 p-4">
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Microphones
-                    </Link>
-                  </li>
-                </div>
-              </ul>
-            </MegaMenu.Dropdown>
-          </button>
-          <button className="rounded-3xl bg-[gray] text-[white] p-2 mr-[20px]">
-            <MegaMenu.Dropdown toggle={<>Headphone Type</>}>
-              <ul className="grid grid-cols-3">
-                <div className="space-y-4 p-4">
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Headphone
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Keyboard
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Mouse
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Webcam
-                    </Link>
-                  </li>
-                </div>
-                <div className="space-y-4 p-4">
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Microphones
-                    </Link>
-                  </li>
-                </div>
-              </ul>
-            </MegaMenu.Dropdown>
-          </button>
-          <button className="rounded-3xl bg-[gray] text-[white] p-2 mr-[20px]">
-            <MegaMenu.Dropdown toggle={<>Headphone Type</>}>
-              <ul className="grid grid-cols-3">
-                <div className="space-y-4 p-4">
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Headphone
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Keyboard
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Mouse
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Webcam
-                    </Link>
-                  </li>
-                </div>
-                <div className="space-y-4 p-4">
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Microphones
-                    </Link>
-                  </li>
-                </div>
-              </ul>
-            </MegaMenu.Dropdown>
-          </button>
-          <button className="rounded-3xl bg-[gray] text-[white] p-2 ">
-            <MegaMenu.Dropdown toggle={<>Sort By</>}>
-              <ul className="grid grid-cols-3">
-                <div className="space-y-4 p-4">
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Headphone
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Keyboard
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Mouse
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Webcam
-                    </Link>
-                  </li>
-                </div>
-                <div className="space-y-4 p-4">
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-primary-600 dark:hover:text-primary-500"
-                    >
-                      Microphones
-                    </Link>
-                  </li>
-                </div>
-              </ul>
-            </MegaMenu.Dropdown>
-          </button>
-        </div>
-        <h2 className="mb-[20px]">Product</h2>
-        <div className="grid grid-cols-4 gap-4 ml-[65px]">
+      <div className="container mx-auto mt-6">
+        <div className="grid grid-cols-4 gap-4">
           {data.map((car) => {
             return (
               <Card
                 key={car.key}
                 className="max-w-sm"
-                imgAlt="Apple Watch Series 7 in colors pink, silver, and black"
+                imgAlt={car.name}
                 imgSrc={car.image}
+                width={100}
               >
-                <a href="#">
+                <Link to={`/product/${car.id}`}>
                   <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
                     {car.name}
                   </h5>
                   <span>{car.shortDes}</span>
-                </a>
+                </Link>
                 <div className="mb-5 mt-2.5 flex items-center">
                   <svg
                     className="h-5 w-5 text-yellow-300"
@@ -443,8 +93,9 @@ const DashBoard = () => {
             );
           })}
         </div>
+        </div>
       </section>
-      <footer></footer>
+      <Footer/>
     </div>
   );
 };
