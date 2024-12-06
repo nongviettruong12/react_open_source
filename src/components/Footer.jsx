@@ -4,6 +4,7 @@ const Footer = () => {
   return (
     <>
       <hr className="mt-[50px] " />
+      
       <div className="flex justify-center mt-6 ">
         <div className="mr-[50px]">
           <p className="font-bold">SẢN PHẨM</p>
@@ -46,9 +47,9 @@ const Footer = () => {
           <p>Tạp chí Toyota</p>
         </div>
       </div>
-      <div className="text-[white] bg-[black]">
+      <div className="text-[white] bg-[black] min-h-[20rem]">
       <div className="flex justify-center mt-[50px]">
-        <div className="mr-[50px]">
+        <div className="mr-[50px] mt-[20px]">
           <p>CÔNG TY Ô TÔ TOYOTA VIỆT NAM</p>
           <p>Số GCNĐKDN: 2500150335</p>
           <p>Cấp lần đầu: Ngày 26/03/2007</p>
@@ -59,7 +60,7 @@ const Footer = () => {
             Nam
           </p>
         </div>
-        <div className="mr-[50px]">
+        <div className="mr-[50px] mt-[20px]">
           <p>ĐƯỜNG DÂY NÓNG</p>
           <p>
             <span>icon</span> 1800 1524
@@ -74,7 +75,7 @@ const Footer = () => {
           <p>Hotline Bảo hiểm Toyota: 1900 633 384</p>
           <img src="" alt="" />
         </div>
-        <div className="mr-[50px]">
+        <div className="mr-[50px] mt-[20px]">
             <p>ĐĂNG KÝ NHẬN BẢN TIN</p>
             <p>Đừng bỏ lỡ những tin tức khuyến mãi của chúng tôi</p>
           <div>

@@ -2,7 +2,7 @@ import React from "react";
 ("use client");
 import { Link } from "react-router-dom";
 import { MegaMenu, Navbar } from "flowbite-react";
-import image from "../assets/2029337.png";
+import image from "../assets/logo.png";
 const Header = () => {
   return (
     <>
