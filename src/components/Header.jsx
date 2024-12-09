@@ -1,7 +1,7 @@
 import React from "react";
 ("use client");
 import { Link } from "react-router-dom";
-import { MegaMenu, Navbar, Dropdown } from "flowbite-react";
+import { MegaMenu, Navbar, Dropdown, Carousel } from "flowbite-react";
 const Header = () => {
   const images_6 = [
     {
@@ -217,13 +217,16 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div className="container mx-auto mt-[94px]">
-        <div className="text-center">
-          <img
-            src="https://www.toyota.com.vn//Resources/Images/251767956485382E3D8EF5D0E1D6D218.png"
-            alt=""
-          />
-        </div>
+      <div className="container mx-auto mt-[-80px]">
+      <div className="h-[62.5rem] sm:h-64 xl:h-auto 2xl:h-[62.5rem] text-center">
+      <Carousel>
+        <img className="w-full h-auto" src="https://www.toyota.com.vn/media/er0oxvhk/desktop_hero-banner-1600x680.jpg" alt="..." />
+        <img className="w-full h-auto" src="https://www.toyota.com.vn/media/s5vddonh/website_hero-banner-desktop-1600x680px.png" alt="..." />
+        <img className="w-full h-auto" src="https://www.toyota.com.vn/media/uzgnyibw/2xe_1600x680.png" alt="..." />
+        <img className="w-full h-auto" src="https://www.toyota.com.vn/media/w3apjzk5/banner-desktop-1600x680-1.png" alt="..." />
+        <img className="w-full h-auto" src="https://www.toyota.com.vn//Resources/Images/251767956485382E3D8EF5D0E1D6D218.png" alt="..." />
+      </Carousel>
+    </div>
       </div>
     </>
   );
