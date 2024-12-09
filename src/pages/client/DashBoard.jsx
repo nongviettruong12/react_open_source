@@ -31,7 +31,7 @@ const DashBoard = () => {
           <ul className="flex space-x-4 justify-center text-3xl">
             {data.slice(0, 5).map((car, index) => {
               return (
-                  <li className="hover: cursor-pointer">{car.brand}</li>
+                  <li className="hover: cursor-pointer mb-2">{car.brand}</li>
               );
             })}
             </ul>
