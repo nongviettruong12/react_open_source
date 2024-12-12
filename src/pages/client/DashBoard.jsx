@@ -7,6 +7,7 @@ import axiosService from "../../api/instance";
 import Footer from "../../components/Footer";
 import { HiUserCircle } from "react-icons/hi";
 const DashBoard = () => {
+  {/* data cứng để gọi ở phần dịch vụ */}
   const dataService = [
     {
       id: 1,
@@ -49,6 +50,7 @@ const DashBoard = () => {
       text: "Yếu tố an toàn là vấn đề rất quan trọng đối với xe ô tô, vì thế việc triệu hồi xe ô tô cần phải tiến hành nhanh chóng kịp thời...",
     },
   ];
+  {/* data cứng để gọi ở phần công nghệ */}
   const dataTechnologies = [
     {
       id: 1,
@@ -86,6 +88,56 @@ const DashBoard = () => {
   const [data, setData] = useState([]);
   const [activeTab, setActiveTab] = useState(0);
   const [activeServiceTab, setActiveServiceTab] = useState(0); // Tab cho dịch vụ
+  const [formData, setFormData] = useState({
+    category:'',
+    name:'',
+    email:'',
+    phone:'',
+    message:'',
+    agree_first:false,
+    agree_last:false
+  })
+  const validateForm = () =>{
+    const { category, name, email, message,phone,agree_first,agree_last  } = formData;
+    const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const isValidPhone = /^\d+$/.test(phone)
+    if(
+      category && name && email && message && agree_first && agree_last
+    ){
+      setIsValid(true);
+    }else{
+      setIsValid(false);
+    }
+  }
+  const handleSubmit = async(e) =>{
+    e.preventDefault()
+    try {
+      await axiosService.post(`/data`,formData)
+      alert("Thông tin đã gửi thành công!")
+      setFormData({
+        category: "",
+        name: "",
+        phone: "",
+        email: "",
+        message: "",
+        agree_first: false,
+        agree_last: false,
+      })
+      setIsValid(false)
+    } catch (error) {
+      alert('Error: ' + error)
+      console.log(error);
+    }
+  }
+  const handleChange = (e) =>{
+    const { name, value, type, checked } = e.target
+    setFormData((prev)=>({
+      ...prev,
+      [name]: type === "checkbox"? checked : value,
+    }))
+    validateForm()
+  }
+  const [isValid, setIsValid] = useState(false)
   const normalizedDataTechnologies = dataTechnologies.map((tech) => ({
     ...tech,
     type: tech.type.toUpperCase(), // Chuyển tất cả các `type` thành chữ hoa
@@ -93,9 +145,11 @@ const DashBoard = () => {
   const [activeTechnologyTab, setActiveTechnologyTab] = useState(
     normalizedDataTechnologies[0]?.type || ""
   )
-  const filteredData = useMemo(()=>{
-    return data.filter((car)=> car.brand === data[activeTab]?.brand)
-  },[data, activeTab])
+  const filteredData = useMemo(() => {
+    return activeTab >= 0 && activeTab < data.length
+      ? data.filter((car) => car.brand === data[activeTab]?.brand)
+      : [];
+  }, [data, activeTab]);
 
   const filteredTechnology = useMemo(() => {
     return normalizedDataTechnologies.filter(
@@ -348,12 +402,12 @@ const DashBoard = () => {
             </div>
           </div>
 
-          <div className="my-[50px]">
-            <button> xem thêm</button>
+          <div className="my-[50px] text-center text-[24px]">
+            <p> Xem thêm các dòng xe khác tại <Link to={'/product'} className="hover:underline text-[Blue] hover:font-bold hover:cursor-pointer">Đây</Link> </p>
           </div>
           {/* form liên hệ*/}
 
-          <form className="border">
+          <form className="border" onSubmit={handleSubmit}>
             <div className="gap-6 mb-6 md:grid-cols-2 max-w-[1064px] mx-auto">
               <div className="text-center font-bold text-[18px] my-6">
                 Trao đổi với chúng tôi
@@ -362,20 +416,23 @@ const DashBoard = () => {
                 <p className="mb-[10px] font-bold">
                   Thông tin quý khách cần biết*
                 </p>
-                <select name="" id="" className="w-full">
-                  <option value="">Bán hàng</option>
-                  <option value="">Dịch vụ</option>
-                  <option value="">Đại lý</option>
-                  <option value="">Tư vấn tài chính</option>
-                  <option value="">Góp ý website</option>
+                <select name="category" id="" className="w-full" value={formData.category}   onChange={handleChange}>
+                  <option value="Bán hàng">Bán hàng</option>
+                  <option value="Dịch vụ">Dịch vụ</option>
+                  <option value="Đại lý">Đại lý</option>
+                  <option value="Tư vấn tài chính">Tư vấn tài chính</option>
+                  <option value="Góp ý website">Góp ý website</option>
                 </select>
               </div>
               <div className="relative z-0 w-full mb-5 group">
                 <p className="mb-[10px] font-bold">
-                  Thông tin quý khách cần biết*
+                 Họ và tên*
                 </p>
                 <input
                   type="text"
+                  value={formData.name}
+                  name="name"
+                  onChange={handleChange}
                   className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder=" "
                   required
@@ -384,10 +441,13 @@ const DashBoard = () => {
               <div className="grid md:grid-cols-2 md:gap-6">
                 <div className="relative z-0 w-full mb-5 group">
                   <p className="mb-[10px] font-bold">
-                    Thông tin quý khách cần biết*
+                   Số điện thoại*
                   </p>
                   <input
                     type="number"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
                     className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" "
                     required
@@ -395,10 +455,13 @@ const DashBoard = () => {
                 </div>
                 <div className="relative z-0 w-full mb-5 group">
                   <p className="mb-[10px] font-bold">
-                    Thông tin quý khách cần biết*
+                   email*
                   </p>
                   <input
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" "
                     required
@@ -407,10 +470,13 @@ const DashBoard = () => {
               </div>
               <div className="relative z-0 w-full mb-5 group">
                 <p className="mb-[10px] font-bold">
-                  Thông tin quý khách cần biết*
+                 Nội dung cần góp ý*
                 </p>
                 <textarea
                   type="text"
+                  value={formData.message}
+                  name="message"
+                  onChange={handleChange}
                   className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder=" "
                   required
@@ -419,9 +485,10 @@ const DashBoard = () => {
               <div className="flex items-start mb-6">
                 <div className="flex items-center h-5">
                   <input
-                    id="remember"
                     type="checkbox"
-                    value=""
+                    name="agree_first"
+                    checked={formData.agree_first}
+                    onChange={handleChange}
                     className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
                     required
                   />
@@ -437,9 +504,10 @@ const DashBoard = () => {
               <div className="flex items-start mb-6">
                 <div className="flex items-center h-5">
                   <input
-                    id="remember"
                     type="checkbox"
-                    value=""
+                    name="agree_last"
+                    checked={formData.agree_last}
+                    onChange={handleChange}
                     className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
                     required
                   />
@@ -463,7 +531,12 @@ const DashBoard = () => {
             <div className="flex justify-center mb-[24px]">
               <button
                 type="submit"
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm w-full sm:w-auto px-9 py-3 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 p-4"
+                disabled={!isValid}
+                className={`text-white font-medium text-sm px-9 py-3 ${
+                  isValid
+                    ? "bg-blue-700 hover:bg-blue-800"
+                    : "bg-gray-400 cursor-not-allowed"
+                }`}
               >
                 Gửi
               </button>
